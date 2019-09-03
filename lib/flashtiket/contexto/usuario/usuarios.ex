@@ -6,7 +6,8 @@ defmodule Flashtiket.Usuarios do
     field :cc, :string
     field :celular, :string
     field :usuario, :string
-    field :contraseña, :string
+    field :encrypted_password, :string
+    field :password, :string,  virtual: true
     field :rol, :string
     timestamps()
   end

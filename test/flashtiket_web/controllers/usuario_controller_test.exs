@@ -8,8 +8,8 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
       "nombre" => "brandon",
       "cc" => "1069748842",
       "celular" => "3153356923",
-      "usuario" => "nicriutman",
-      "contraseña" => "315"
+      "usuario" => "nicriutman@gmail.com",
+      "password" => "315"
     }
   }
 
@@ -18,7 +18,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
       "nombre" => "brandon",
       "cc" => "1069748842",
       "celular" => "3153356923",
-      "usuario" => "nicriutman"
+      "usuario" => "nicriutman@gmail.com"
     }
   }
 
@@ -48,8 +48,8 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
         "nombre" => "stevan",
         "cc" => "1069748842",
         "celular" => "3153356923",
-        "usuario" => "nicriutman",
-        "contraseña" => "315"
+        "usuario" => "nicriutman@gmail.com",
+        "password" => "315"
       }
     })
     assert json_response(conn, 200)["status"] == "success"

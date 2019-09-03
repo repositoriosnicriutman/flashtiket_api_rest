@@ -9,13 +9,27 @@ defmodule Flashtiket.UsuariosConsulta do
     :cc,
     :celular,
     :usuario,
-    :contraseña
+    :password
   ]
 
   def changeset(usuario = %Usuarios{}, parametros \\ %{}) do
     usuario
     |> cast(parametros, @datos)
     |> validate_required(@datos)
+    |> validate_format(:usuario, ~r/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
+    |> validate_length(:password, min: 3)
+    |> unique_constraint(:usuario)
+    |> put_hashed_password
+  end
+
+  defp put_hashed_password(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: password}}
+        ->
+          put_change(changeset, :encrypted_password, Comeonin.Bcrypt.hashpwsalt(password))
+      _ ->
+          changeset
+    end
   end
 
   def crear_usuario(changeset) do

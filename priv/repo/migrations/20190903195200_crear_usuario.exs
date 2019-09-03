@@ -7,7 +7,7 @@ defmodule Flashtiket.Repo.Migrations.CrearUsuario do
       add :cc, :string
       add :celular, :string
       add :usuario, :string
-      add :contraseña, :string
+      add :encrypted_password, :string
       add :rol, :string, default: "cliente"
       timestamps()
     end

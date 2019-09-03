@@ -44,7 +44,7 @@ defmodule FlashtiketWeb.UsuarioController do
       "id" => id,
       "cc" => _cc,
       "celular" => _celular,
-      "contraseña" => _contraseña,
+      "password" => _contraseña,
       "nombre" => _nombre,
       "usuario" => _usuario} = datos_usuario}) do
     changeset = Flashtiket.UsuariosConsulta.changeset(%Usuarios{id: id},datos_usuario)
