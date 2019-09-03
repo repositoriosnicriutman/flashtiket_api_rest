@@ -3,6 +3,7 @@ defmodule FlashtiketWeb.UsuarioController do
   alias Flashtiket.Usuarios
   alias Flashtiket.UsuariosConsulta
   alias FlashtiketWeb.UsuarioView
+  alias FlashtiketWeb.Auth.Guardian
 
   action_fallback(FlashtiketWeb.FallbackControler)
 

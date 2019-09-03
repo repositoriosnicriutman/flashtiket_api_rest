@@ -10,6 +10,10 @@ use Mix.Config
 config :flashtiket,
   ecto_repos: [Flashtiket.Repo]
 
+config :flashtiket, FlashtiketWeb.Auth.Guardian,
+  issuer: "flashtiket",
+  secret_key: "RtqvQo42AZw5yTaI2Q0/E3HGjNmUUJGcYZlOJQckzzvSHLOhPpPnQr8KWvloW3I2"
+
 # Configures the endpoint
 config :flashtiket, FlashtiketWeb.Endpoint,
   url: [host: "localhost"],

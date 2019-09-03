@@ -43,6 +43,10 @@ defmodule Flashtiket.UsuariosConsulta do
     Repo.one(query)
   end
 
+  def consultar_id(id) do
+    Repo.get!(Usuarios, id)
+  end
+
   def consultar_todos() do
     query = from u in Flashtiket.Usuarios,
             select: u
