@@ -6,6 +6,7 @@
               {description,"flashtiket"},
               {modules,['Elixir.Flashtiket','Elixir.Flashtiket.Application',
                         'Elixir.Flashtiket.AuthToken',
+                        'Elixir.Flashtiket.AuthTokens',
                         'Elixir.Flashtiket.DataCase',
                         'Elixir.Flashtiket.Planillas',
                         'Elixir.Flashtiket.PlanillasConsulta',

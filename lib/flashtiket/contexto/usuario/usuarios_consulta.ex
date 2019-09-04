@@ -41,7 +41,6 @@ defmodule Flashtiket.UsuariosConsulta do
         IO.inspect token
         IO.inspect user
         Repo.insert(Ecto.build_assoc(user, :auth_tokens, %{token: token}))
-        IO.puts "hola5"
         err -> err
     end
   end

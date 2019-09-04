@@ -3,7 +3,7 @@ defmodule Flashtiket.Repo.Migrations.CreateAuthTokens do
 
   def change do
     create table(:auth_tokens) do
-      add :user_id, references(:usuarios, on_delete: :nothing), null: false
+      add :usuarios_id, references(:usuarios, on_delete: :nothing), null: false
       add :token, :text, null: false
       add :revoked, :boolean, default: false, null: false
       add :revoked_at, :utc_datetime
@@ -12,6 +12,6 @@ defmodule Flashtiket.Repo.Migrations.CreateAuthTokens do
     end
 
     create unique_index(:auth_tokens, [:token])
-    create index(:auth_tokens, [:user_id])
+    create index(:auth_tokens, [:usuarios_id])
   end
 end
