@@ -18,7 +18,7 @@ defmodule FlashtiketWeb.UsuarioView do
       nombre: usuario.nombre,
       cc: usuario.cc,
       celular: usuario.celular,
-      usuario: usuario.usuario,
+      email: usuario.email,
       encrypted_password: usuario.encrypted_password
     }
   }

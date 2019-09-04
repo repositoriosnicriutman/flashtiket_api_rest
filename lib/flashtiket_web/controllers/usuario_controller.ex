@@ -3,7 +3,6 @@ defmodule FlashtiketWeb.UsuarioController do
   alias Flashtiket.Usuarios
   alias Flashtiket.UsuariosConsulta
   alias FlashtiketWeb.UsuarioView
-  alias FlashtiketWeb.Auth.Guardian
 
   action_fallback(FlashtiketWeb.FallbackControler)
 
@@ -47,7 +46,7 @@ defmodule FlashtiketWeb.UsuarioController do
       "celular" => _celular,
       "password" => _contraseña,
       "nombre" => _nombre,
-      "usuario" => _usuario} = datos_usuario}) do
+      "email" => _email} = datos_usuario}) do
     changeset = Flashtiket.UsuariosConsulta.changeset(%Usuarios{id: id},datos_usuario)
     case changeset.valid? do
       true ->

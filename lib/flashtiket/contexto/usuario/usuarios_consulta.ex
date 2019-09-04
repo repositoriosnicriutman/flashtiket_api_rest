@@ -1,5 +1,6 @@
 defmodule Flashtiket.UsuariosConsulta do
   alias Flashtiket.Usuarios
+  alias Flashtiket.Services.Authenticator
   alias Flashtiket.Repo
   import Ecto.Changeset
   import Ecto.Query
@@ -8,7 +9,7 @@ defmodule Flashtiket.UsuariosConsulta do
     :nombre,
     :cc,
     :celular,
-    :usuario,
+    :email,
     :password
   ]
 
@@ -16,9 +17,9 @@ defmodule Flashtiket.UsuariosConsulta do
     usuario
     |> cast(parametros, @datos)
     |> validate_required(@datos)
-    |> validate_format(:usuario, ~r/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
+    |> validate_format(:email, ~r/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
     |> validate_length(:password, min: 3)
-    |> unique_constraint(:usuario)
+    |> unique_constraint(:email)
     |> put_hashed_password
   end
 
@@ -29,6 +30,30 @@ defmodule Flashtiket.UsuariosConsulta do
           put_change(changeset, :encrypted_password, Comeonin.Bcrypt.hashpwsalt(password))
       _ ->
           changeset
+    end
+  end
+
+  def sign_in(email, password) do
+    case Comeonin.Bcrypt.check_pass(Repo.get_by(Usuarios, email: email), password) do
+      {:ok, user} ->
+        IO.puts "hola3"
+        token = Authenticator.generate_token(user)
+        IO.inspect token
+        IO.inspect user
+        Repo.insert(Ecto.build_assoc(user, :auth_tokens, %{token: token}))
+        IO.puts "hola5"
+        err -> err
+    end
+  end
+
+  def sign_out(conn) do
+    case Authenticator.get_auth_token(conn) do
+      {:ok, token} ->
+        case Repo.get_by(AuthToken, %{token: token}) do
+          nil -> {:error, :not_found}
+          auth_token -> Repo.delete(auth_token)
+        end
+      error -> error
     end
   end
 

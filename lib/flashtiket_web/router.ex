@@ -5,6 +5,11 @@ defmodule FlashtiketWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/sessions", FlashtiketWeb do
+    post "/sign_in", SessionsController, :create
+    delete "/sign_out", SessionsController, :delete
+  end
+
   scope "/api", FlashtiketWeb do
     pipe_through :api
 
