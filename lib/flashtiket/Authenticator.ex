@@ -25,8 +25,10 @@ defmodule Flashtiket.Services.Authenticator do
 
   defp extract_token(conn) do
     case Plug.Conn.get_req_header(conn, "authorization") do
-      [auth_header] -> get_token_from_header(auth_header)
-       _ -> {:error, :missing_auth_header}
+      [auth_header] ->
+        get_token_from_header(auth_header)
+       _ ->
+        {:error, :missing_auth_header}
     end
   end
 

@@ -3,10 +3,8 @@ defmodule FlashtiketWeb.SessionsController do
   alias Flashtiket.UsuariosConsulta
 
   def create(conn, %{"email" => email, "password" => password}) do
-    IO.puts "hola1"
     case UsuariosConsulta.sign_in(email, password) do
       {:ok, auth_token} ->
-        IO.puts "hola2"
         conn
         |> put_status(:ok)
         |> render("show.json", auth_token)

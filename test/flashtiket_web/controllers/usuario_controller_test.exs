@@ -8,7 +8,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
       "nombre" => "brandon",
       "cc" => "1069748842",
       "celular" => "3153356923",
-      "usuario" => "nicriutman@gmail.com",
+      "email" => "nicriutman@gmail.com",
       "password" => "315"
     }
   }
@@ -18,7 +18,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
       "nombre" => "brandon",
       "cc" => "1069748842",
       "celular" => "3153356923",
-      "usuario" => "nicriutman@gmail.com"
+      "email" => "nicriutman@gmail.com"
     }
   }
 
@@ -41,6 +41,13 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
     assert json_response(conn, 200)["status"] == "success"
   end
 
+  test "obtener usuarios", %{conn: conn}do
+    auth = post(conn, "/sessions/sign_in", %{"email" => "nicriutman@gmail.com", "password" => "315"})
+    conn1 = get(auth, "/api/obtener_usuarios")
+    [respuesta | cola] = json_response(conn1, 200)
+    assert respuesta["status"] == "success"
+  end
+
   test "actualizar", %{conn: conn} do
     conn = put(build_conn(), "/api/actualizar_usuarios", %{
       "usuario" => %{
@@ -48,7 +55,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
         "nombre" => "stevan",
         "cc" => "1069748842",
         "celular" => "3153356923",
-        "usuario" => "nicriutman@gmail.com",
+        "email" => "nicriutman@gmail.com",
         "password" => "315"
       }
     })
@@ -58,12 +65,6 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
   test "borrar usuario", %{conn: conn} do
     conn = delete(build_conn(), "/api/borrar_usuario", %{"id" => conn.assigns.usuario.id})
     assert json_response(conn, 200)["status"] == "success"
-  end
-
-  test "obtener usuarios", %{conn: conn}do
-    conn = get(build_conn(), "/api/obtener_usuarios")
-    [respuesta | cola] = json_response(conn, 200)
-    assert respuesta["status"] == "success"
   end
 
 end

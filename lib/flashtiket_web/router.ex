@@ -5,6 +5,10 @@ defmodule FlashtiketWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authenticate do
+    plug FlashtiketWeb.Plugs.Authenticate
+  end
+
   scope "/sessions", FlashtiketWeb do
     post "/sign_in", SessionsController, :create
     delete "/sign_out", SessionsController, :delete
@@ -14,8 +18,13 @@ defmodule FlashtiketWeb.Router do
     pipe_through :api
 
     post "/crear_usuario", UsuarioController, :crear
-    get "/obtener_usuarios_cc/:cc", UsuarioController, :obtener
+  end
+
+  scope "/api", FlashtiketWeb do
+    pipe_through [:authenticate, :api]
+
     get "/obtener_usuarios", UsuarioController, :obtener_todos
+    get "/obtener_usuarios_cc/:cc", UsuarioController, :obtener
     put "/actualizar_usuarios", UsuarioController, :actualizar
     delete "/borrar_usuario", UsuarioController, :borrar
 

@@ -7,15 +7,7 @@ defmodule Flashtiket.UsuariosConsultaTest do
     "nombre": "brandon",
     "cc": "1069748842",
     "celular": "3153356923",
-    "usuario": "nicriutman@gmail.com",
-    "password": "315"
-  }
-
-  @dato2 %{
-    "nombre": "brandon",
-    "cc": "1069748843",
-    "celular": "3195244467",
-    "usuario": "nicriutman@gmail.com",
+    "email": "nicriutman@gmail.com",
     "password": "315"
   }
 
@@ -43,7 +35,7 @@ defmodule Flashtiket.UsuariosConsultaTest do
       "nombre": "stevan",
       "cc": "1069748842",
       "celular": "3153356923",
-      "usuario": "nicriutman@gmail.com",
+      "email": "nicriutman@gmail.com",
       "password": "315"
     })
     assert {:ok, struct} = UsuariosConsulta.actualizar_usuario(changeset)

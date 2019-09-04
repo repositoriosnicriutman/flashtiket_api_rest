@@ -36,10 +36,7 @@ defmodule Flashtiket.UsuariosConsulta do
   def sign_in(email, password) do
     case Comeonin.Bcrypt.check_pass(Repo.get_by(Usuarios, email: email), password) do
       {:ok, user} ->
-        IO.puts "hola3"
         token = Authenticator.generate_token(user)
-        IO.inspect token
-        IO.inspect user
         Repo.insert(Ecto.build_assoc(user, :auth_tokens, %{token: token}))
         err -> err
     end
