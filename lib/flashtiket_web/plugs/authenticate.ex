@@ -5,9 +5,12 @@ defmodule FlashtiketWeb.Plugs.Authenticate do
   def call(conn, _default) do
     case Flashtiket.Services.Authenticator.get_auth_token(conn) do
       {:ok, token} ->
-        case Flashtiket.Repo.get_by(Flashtiket.AuthToken, %{token: token, revoked: false}) |> Repo.preload(:user) do
-          nil -> unauthorized(conn)
-          auth_token -> authorized(conn, auth_token.user)
+        case Flashtiket.Repo.get_by(Flashtiket.AuthToken, %{token: token, revoked: false})
+              |> Repo.preload(:usuarios) do
+          nil ->
+            unauthorized(conn)
+          auth_token ->
+            authorized(conn, auth_token.usuarios)
         end
       _ -> unauthorized(conn)
     end

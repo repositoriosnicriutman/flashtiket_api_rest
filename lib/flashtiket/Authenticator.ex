@@ -35,7 +35,8 @@ defmodule Flashtiket.Services.Authenticator do
   defp get_token_from_header(auth_header) do
     {:ok, reg} = Regex.compile("Bearer\:?\s+(.*)$", "i")
     case Regex.run(reg, auth_header) do
-      [_, match] -> {:ok, String.trim(match)}
+      [_, match] ->
+        {:ok, String.trim(match)}
       _ -> {:error, "token not found"}
     end
   end

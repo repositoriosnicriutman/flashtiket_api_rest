@@ -20,7 +20,7 @@ defmodule FlashtiketWeb.SessionControllerTest do
 
   test "iniciar session", %{conn: conn} do
     auth = post(build_conn(), "/sessions/sign_in", %{"email" => "nicriutman@gmail.com", "password" => "315"})
-    assert json_response(auth, 200) == %{"data" => %{"token" => _token}}
+    assert json_response(auth, 200) == true
   end
 
 end

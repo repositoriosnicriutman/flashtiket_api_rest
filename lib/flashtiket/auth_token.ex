@@ -5,8 +5,7 @@ defmodule Flashtiket.AuthToken do
     alias Flashtiket.Usuarios
 
   schema "auth_tokens" do
-      belongs_to :usuario, Usuarios
-      field :usuarios_id, :id
+      belongs_to :usuarios, Usuarios
       field :revoked, :boolean, default: false
       field :revoked_at, :utc_datetime
       field :token, :string

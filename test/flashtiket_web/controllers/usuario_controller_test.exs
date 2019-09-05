@@ -2,6 +2,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
   use FlashtiketWeb.ConnCase
   alias Flashtiket.Usuarios
   alias Flashtiket.UsuariosConsulta
+  use Guardian, otp_app: :Flashtiket
 
   @usuario %{
     "usuario" => %{
@@ -24,7 +25,8 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
 
   setup do
     conn = post(build_conn(), "/api/crear_usuario", @usuario)
-    {:ok, conn: conn}
+    signed_conn = Guardian.Plug.api_sign_in(conn, conn.assigns.usuario)
+    {:ok, conn: signed_conn}
   end
 
   test "crear usuario", %{conn: conn} do
