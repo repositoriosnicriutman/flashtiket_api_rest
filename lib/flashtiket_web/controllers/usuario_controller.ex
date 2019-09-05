@@ -10,10 +10,14 @@ defmodule FlashtiketWeb.UsuarioController do
     changeset = Flashtiket.UsuariosConsulta.changeset(%Usuarios{},datos_usuario)
     case changeset.valid? do
       true ->
-        {:ok, usuario} = UsuariosConsulta.crear_usuario(changeset)
-        {:success, UsuarioView, "show.json", usuario: usuario}
+        case UsuariosConsulta.crear_usuario(changeset) do
+          {:ok, usuario} ->
+            {:success, UsuarioView, "show.json", usuario: usuario}
+          {:error, changeset} ->
+            {:error, changeset}
+        end
       false ->
-        {:error, "400.json"}
+        {:error, changeset}
     end
   end
 
@@ -22,9 +26,7 @@ defmodule FlashtiketWeb.UsuarioController do
       nil ->
           {:error, "404.json"}
       usuario ->
-          {:success, UsuarioView, "show.json", usuario: usuario}
-      {:error, reason} ->
-          {:error, reason}
+          {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
     end
   end
 
@@ -34,35 +36,30 @@ defmodule FlashtiketWeb.UsuarioController do
           {:error, "404.json"}
       usuario ->
           {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
-      {:error, reason} ->
-          {:error, reason}
     end
   end
 
-  def actualizar(_conn,
-  %{"usuario" =>  %{
-      "id" => id,
-      "cc" => _cc,
-      "celular" => _celular,
-      "password" => _contraseña,
-      "nombre" => _nombre,
-      "email" => _email} = datos_usuario}) do
-    changeset = Flashtiket.UsuariosConsulta.changeset(%Usuarios{id: id},datos_usuario)
+  def actualizar(_conn, %{"usuario" => datos_usuario}) do
+    changeset = Flashtiket.UsuariosConsulta.changeset(%Usuarios{id: datos_usuario["id"]},datos_usuario)
     case changeset.valid? do
       true ->
-        {:ok, usuario} = UsuariosConsulta.actualizar_usuario(changeset)
-        {:success, UsuarioView, "show.json", usuario: usuario}
+        case UsuariosConsulta.actualizar_usuario(changeset) do
+          {:ok, usuario} ->
+            {:success, UsuarioView, "show.json", usuario: usuario}
+          {:error, changeset} ->
+            {:error, changeset}
+        end
       false ->
-        {:error, "400.json"}
+        {:error, changeset}
     end
   end
 
   def borrar(_conn, %{"id" => id_usuario}) do
-    case UsuariosConsulta.borrar_usuario(%Usuarios{id: id_usuario}) do
+    case UsuariosConsulta.borrar_usuario(%Usuarios{id: String.to_integer id_usuario}) do
       {:ok, usuario} ->
-        {:success, UsuarioView, "show.json", usuario: usuario}
-      {:error, razon} ->
-        {:error, razon}
+        {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
+      {:error, changeset} ->
+        {:error, changeset}
     end
   end
 

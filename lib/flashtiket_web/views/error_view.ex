@@ -36,7 +36,7 @@ defmodule FlashtiketWeb.ErrorView do
     %{
       status: "error",
       data: nil,
-      errors: %{detail: "revise parametros"},
+      errors: %{detail: "datos no encontrados"},
       pagination: nil
     }
   end

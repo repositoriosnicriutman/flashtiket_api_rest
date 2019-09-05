@@ -6,7 +6,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
 
   @usuario %{
     "usuario" => %{
-      "nombre" => "brandon",
+      "nombre" => "brandon castro",
       "cc" => "1069748842",
       "celular" => "3153356923",
       "email" => "nicriutman@gmail.com",
@@ -24,9 +24,14 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
   }
 
   setup do
-    conn = post(build_conn(), "/api/crear_usuario", @usuario)
-    signed_conn = Guardian.Plug.api_sign_in(conn, conn.assigns.usuario)
-    {:ok, conn: signed_conn}
+    post(build_conn(), "/api/crear_usuario", @usuario)
+    {:ok, token} = UsuariosConsulta.sign_in("nicriutman@gmail.com", "315")
+    conn =
+      Phoenix.ConnTest.build_conn()
+      |> Plug.Conn.put_req_header("accept", "application/json")
+      |> Plug.Conn.put_req_header("authorization", "Bearer #{token.token}")
+      IO.inspect conn
+    {:ok, conn: conn}
   end
 
   test "crear usuario", %{conn: conn} do
@@ -39,7 +44,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
   end
 
   test "obtener usuario cc", %{conn: conn}do
-    conn = get(build_conn(), "/api/obtener_usuarios_cc/#{conn.assigns.usuario.cc}")
+    conn = get(build_conn(), "/api/obtener_usuarios_cc/1069748842")
     assert json_response(conn, 200)["status"] == "success"
   end
 

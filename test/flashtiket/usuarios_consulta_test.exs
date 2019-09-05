@@ -4,7 +4,7 @@ defmodule Flashtiket.UsuariosConsultaTest do
   alias Flashtiket.Usuarios
 
   @dato %{
-    "nombre": "brandon",
+    "nombre": "brandon castro",
     "cc": "1069748842",
     "celular": "3153356923",
     "email": "nicriutman@gmail.com",
@@ -32,7 +32,7 @@ defmodule Flashtiket.UsuariosConsultaTest do
 
   test "actualizar_usuario", %{usuario: usuario} do
     changeset = UsuariosConsulta.changeset(%Usuarios{id: usuario.id}, %{
-      "nombre": "stevan",
+      "nombre": "brandon lopez",
       "cc": "1069748842",
       "celular": "3153356923",
       "email": "nicriutman@gmail.com",

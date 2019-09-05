@@ -17,8 +17,6 @@ defmodule Flashtiket.UsuariosConsulta do
     usuario
     |> cast(parametros, @datos)
     |> validate_required(@datos)
-    |> validate_format(:email, ~r/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
-    |> validate_length(:password, min: 3)
     |> unique_constraint(:email)
     |> put_hashed_password
   end
@@ -34,13 +32,15 @@ defmodule Flashtiket.UsuariosConsulta do
   end
 
   def sign_in(email, password) do
-    case Comeonin.Bcrypt.check_pass(Repo.get_by(Usuarios, email: email), password) do
+    case Comeonin.Bcrypt.check_pass(consultar_email(email), password) do
       {:ok, user} ->
         token = Authenticator.generate_token(user)
         Repo.insert(Ecto.build_assoc(user, :auth_tokens, %{token: token}))
         err -> err
     end
   end
+
+
 
   def sign_out(conn) do
     case Authenticator.get_auth_token(conn) do
@@ -61,7 +61,11 @@ defmodule Flashtiket.UsuariosConsulta do
     query = from u in Flashtiket.Usuarios,
             where: u.cc == ^cc,
             select: u
-    Repo.one(query)
+    Repo.all(query)
+  end
+
+  def consultar_email(email) do
+    Repo.get_by(Usuarios, email: email)
   end
 
   def consultar_id(id) do

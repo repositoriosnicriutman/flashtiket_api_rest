@@ -16,6 +16,7 @@
                         'Elixir.Flashtiket.Usuarios',
                         'Elixir.Flashtiket.UsuariosConsulta',
                         'Elixir.FlashtiketWeb',
+                        'Elixir.FlashtiketWeb.ChangesetView',
                         'Elixir.FlashtiketWeb.ChannelCase',
                         'Elixir.FlashtiketWeb.ConnCase',
                         'Elixir.FlashtiketWeb.Endpoint',

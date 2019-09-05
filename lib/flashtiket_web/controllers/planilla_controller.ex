@@ -6,7 +6,6 @@ defmodule FlashtiketWeb.PlanillaController do
 
   action_fallback(FlashtiketWeb.FallbackControler)
 
-
   def crear(_conn, %{"planilla" => datos_planilla}) do
     changeset = PlanillasConsulta.changeset(%Planillas{}, datos_planilla)
     case changeset.valid? do
