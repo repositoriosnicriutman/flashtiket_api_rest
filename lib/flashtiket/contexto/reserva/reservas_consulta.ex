@@ -16,6 +16,7 @@ defmodule Flashtiket.ReservasConsulta do
     reserva
       |> cast(params, @datos)
       |> validate_required(@datos)
+      |> unique_constraint(:puesto, name: :reservas_id_planilla_puesto_index)
   end
 
   def crear_reserva(changeset) do
@@ -40,7 +41,12 @@ defmodule Flashtiket.ReservasConsulta do
     Repo.update(changeset)
   end
 
-  def borrar_reserva(changeset) do
-    Repo.delete(changeset)
+  def borrar_reserva(id) do
+    case Repo.exists?(Flashtiket.Reservas, id: id) do
+      true ->
+        Repo.delete(id)
+      false ->
+        false
+    end
   end
 end

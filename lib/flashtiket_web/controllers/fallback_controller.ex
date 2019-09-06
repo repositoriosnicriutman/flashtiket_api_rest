@@ -9,28 +9,10 @@ defmodule FlashtiketWeb.FallbackControler do
     |> render(module, view, assigns)
   end
 
-  def call(conn, {:error, "400.json"}) do
-    conn
-    |> put_status(400)
-    |> render(ErrorView, "400.json")
-  end
-
   def call(conn, {:error, %Ecto.Changeset{} = changeset}) do
     conn
     |> put_status(400)
     |> render(ChangesetView, "error.json", changeset: changeset)
-  end
-
-  def call(conn, {:error, message}) when is_binary(message) do
-    conn
-    |> put_status(400)
-    |> render(ErrorView, "error.json", %{message: message})
-  end
-
-  def call(conn, {:error, "500.json"}) do
-    conn
-    |> put_status(500)
-    |> render(ErrorView, "500.json")
   end
 
   def call(conn, {:error, "404.json"}) do

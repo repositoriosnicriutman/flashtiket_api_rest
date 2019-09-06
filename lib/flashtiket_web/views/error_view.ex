@@ -14,30 +14,11 @@ defmodule FlashtiketWeb.ErrorView do
     Phoenix.Controller.status_message_from_template(template)
   end
 
-  def render("400.json", _assigns) do
-    %{
-      status: "error",
-      data: nil,
-      errors: %{detail: "revise parametros"},
-      pagination: nil
-    }
-  end
-
-  def render("500.json", _assigns) do
-    %{
-      status: "error",
-      data: nil,
-      errors: %{detail: "revise id"},
-      pagination: nil
-    }
-  end
-
   def render("404.json", _assigns) do
     %{
       status: "error",
       data: nil,
-      errors: %{detail: "datos no encontrados"},
-      pagination: nil
+      errors: %{detail: "datos no encontrados"}
     }
   end
 end

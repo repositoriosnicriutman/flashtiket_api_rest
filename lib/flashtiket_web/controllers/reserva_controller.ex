@@ -10,10 +10,14 @@ defmodule FlashtiketWeb.ReservaController do
     changeset = Flashtiket.ReservasConsulta.changeset(%Reservas{},datos_reserva)
     case changeset.valid? do
       true ->
-        {:ok, reserva} = ReservasConsulta.crear_reserva(changeset)
-        {:success, ReservaView, "show.json", reserva: reserva}
+        case ReservasConsulta.crear_reserva(changeset) do
+          {:ok, reserva} ->
+            {:success, ReservaView, "show.json", reserva: reserva}
+          {:error, changeset} ->
+            {:error, changeset}
+        end
       false ->
-        {:error, "400.json"}
+        {:error, changeset}
     end
   end
 
@@ -23,8 +27,6 @@ defmodule FlashtiketWeb.ReservaController do
           {:error, "404.json"}
       reserva ->
           {:success, ReservaView, "show_colecction.json", reserva: reserva}
-      {:error, reason} ->
-          {:error, reason}
     end
   end
 
@@ -34,8 +36,6 @@ defmodule FlashtiketWeb.ReservaController do
           {:error, "404.json"}
       reserva ->
         {:success, ReservaView, "show_colecction.json", %{reserva: reserva}}
-      {:error, reason} ->
-          {:error, reason}
     end
   end
 
@@ -51,19 +51,25 @@ defmodule FlashtiketWeb.ReservaController do
     changeset = Flashtiket.ReservasConsulta.changeset(%Reservas{id: id},datos_reserva)
     case changeset.valid? do
       true ->
-        {:ok, reserva} = ReservasConsulta.actualizar_reserva(changeset)
-        {:success, ReservaView, "show.json", reserva: reserva}
+        case ReservasConsulta.actualizar_reserva(changeset) do
+          {:ok, reserva} ->
+            {:success, ReservaView, "show.json", reserva: reserva}
+          {:error, changeset} ->
+            {:error, changeset}
+        end
       false ->
-        {:error, "400.json"}
+        {:error, changeset}
     end
   end
 
   def borrar(_conn, %{"id" => id_reserva}) do
-    case ReservasConsulta.borrar_reserva(%Reservas{id: id_reserva}) do
+    case ReservasConsulta.borrar_reserva(%Reservas{id: String.to_integer id_reserva}) do
       {:ok, reserva} ->
         {:success, ReservaView, "show.json", reserva: reserva}
-      {:error, razon} ->
-        {:error, razon}
+      {:error, changeset} ->
+        {:error, changeset}
+      false ->
+        {:error, "404.json"}
     end
   end
 

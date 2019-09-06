@@ -60,6 +60,8 @@ defmodule FlashtiketWeb.UsuarioController do
         {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
       {:error, changeset} ->
         {:error, changeset}
+      false ->
+        {:error, "404.json"}
     end
   end
 

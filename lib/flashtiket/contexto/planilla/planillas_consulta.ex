@@ -17,6 +17,7 @@ defmodule Flashtiket.PlanillasConsulta do
     planilla
       |> cast(params, @datos)
       |> validate_required(@datos)
+      |> unique_constraint(:fecha, name: :planillas_fecha_hora_codigo_index)
   end
 
   def crear_planilla(changeset) do
@@ -56,7 +57,12 @@ defmodule Flashtiket.PlanillasConsulta do
     Repo.update(changeset)
   end
 
-  def borrar_planilla(changeset) do
-    Repo.delete(changeset)
+  def borrar_planilla(id) do
+    case Repo.exists?(Flashtiket.Planillas, id: id) do
+      true ->
+        Repo.delete(id)
+      false ->
+        false
+    end
   end
 end

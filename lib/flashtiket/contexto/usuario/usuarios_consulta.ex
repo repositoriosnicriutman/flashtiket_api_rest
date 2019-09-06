@@ -82,8 +82,13 @@ defmodule Flashtiket.UsuariosConsulta do
     Repo.update(changeset)
   end
 
-  def borrar_usuario(changeset) do
-    Repo.delete(changeset)
+  def borrar_usuario(id) do
+    case Repo.exists?(Flashtiket.Usuarios, id: id) do
+      true ->
+        Repo.delete(id)
+      false ->
+        false
+    end
   end
 
 end
