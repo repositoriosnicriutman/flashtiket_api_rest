@@ -25,6 +25,7 @@ defmodule FlashtiketWeb.Router do
 
     get "/obtener_usuarios", UsuarioController, :obtener_todos
     get "/obtener_usuarios_cc/:cc", UsuarioController, :obtener
+    get "/obtener_usuarios_email/:email", UsuarioController, :obtener_email
     put "/actualizar_usuarios", UsuarioController, :actualizar
     delete "/borrar_usuario/:id", UsuarioController, :borrar
 
@@ -32,6 +33,7 @@ defmodule FlashtiketWeb.Router do
     get "/obtener_planilla_id/:id", PlanillaController, :obtener_id
     get "/obtener_planilla_fecha/:fecha", PlanillaController, :obtener_fecha
     get "/obtener_planilla_fecha_y_hora/:fecha/:hora", PlanillaController, :obtener_fecha_y_hora
+    get "/obtener_planilla_fecha_hora_y_codigo/:fecha/:hora/:codigo", PlanillaController, :obtener_fecha_hora_y_codigo
     get "/obtener_planilla_activa", PlanillaController, :obtener_activa
     put "/actualizar_planilla", PlanillaController, :actualizar
     delete "/borrar_planilla/:id", PlanillaController, :borrar
@@ -39,6 +41,7 @@ defmodule FlashtiketWeb.Router do
     post "/crear_reserva", ReservaController, :crear
     get "/obtener_reserva_cc/:cc", ReservaController, :obtener_cc
     get "/obtener_reserva_id_planilla/:id_planilla", ReservaController, :obtener_id
+    get "/obtener_reserva_id_planilla_y_puesto/:id_planilla/:puesto", ReservaController, :obtener_id_planilla_y_puesto
     put "/actualizar_reserva", ReservaController, :actualizar
     delete "/borrar_reserva/:id", ReservaController, :borrar
   end

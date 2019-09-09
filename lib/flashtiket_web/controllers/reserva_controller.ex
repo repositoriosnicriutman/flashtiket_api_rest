@@ -24,6 +24,12 @@ defmodule FlashtiketWeb.ReservaController do
     end
   end
 
+  def obtener_id_planilla_y_puesto(_conn, %{"id_planilla" => id_planilla, "puesto" => puesto}) do
+    with reserva <- ReservasConsulta.consultar_id_y_puesto(id_planilla, puesto) do
+      {:success, ReservaView, "show.json", reserva: reserva}
+    end
+  end
+
 
   def actualizar(_conn, %{"reserva" => datos_reserva}) do
     with {:ok, reserva} <- Flashtiket.ReservasConsulta.actualizar_reserva(datos_reserva) do

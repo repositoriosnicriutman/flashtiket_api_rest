@@ -48,6 +48,15 @@ defmodule Flashtiket.PlanillasConsulta do
     Repo.all(query)
   end
 
+  def consultar_fecha_hora_y_codigo(fecha, hora, codigo) do
+    query = from u in Planillas,
+            where: u.fecha == ^fecha
+            and u.hora == ^hora
+            and u.codigo == ^codigo,
+            select: u
+    Repo.one(query)
+  end
+
   def consultar_activa() do
     query = from u in Planillas,
             where: u.estado == "activo",

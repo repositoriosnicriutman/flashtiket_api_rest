@@ -39,6 +39,14 @@ defmodule Flashtiket.ReservasConsulta do
     Repo.all(query)
   end
 
+  def consultar_id_y_puesto(id, puesto) do
+    query = from u in Reservas,
+            where: u.id_planilla == ^id
+            and u.puesto == ^puesto,
+            select: u
+    Repo.one(query)
+  end
+
   def actualizar_reserva(parametros) do
     %Reservas{id: parametros["id"]}
     |>changeset(parametros)

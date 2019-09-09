@@ -24,6 +24,12 @@ defmodule FlashtiketWeb.UsuarioController do
     end
   end
 
+  def obtener_email(_conn, %{"email" => email}) do
+    with usuario <- UsuariosConsulta.consultar_email(email) do
+      {:success, UsuarioView, "show.json", usuario: usuario}
+    end
+  end
+
   def actualizar(_conn, %{"usuario" => datos_usuario}) do
     with {:ok, usuario} <- UsuariosConsulta.actualizar_usuario(datos_usuario) do
             {:success, UsuarioView, "show.json", usuario: usuario}

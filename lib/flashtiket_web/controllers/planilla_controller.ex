@@ -30,6 +30,13 @@ defmodule FlashtiketWeb.PlanillaController do
      end
   end
 
+  def obtener_fecha_hora_y_codigo(_conn, %{"fecha" => fecha_planilla, "hora" => hora_planilla, "codigo" => codigo_planilla}) do
+    with planilla <- PlanillasConsulta.consultar_fecha_hora_y_codigo(fecha_planilla, hora_planilla, codigo_planilla) do
+      IO.inspect planilla
+      {:success, PlanillaView, "show.json", planilla: planilla}
+     end
+  end
+
   def obtener_activa(_conn, _params) do
     with planilla <- PlanillasConsulta.consultar_activa() do
       {:success, PlanillaView, "show_coleccion.json", planilla: planilla}
