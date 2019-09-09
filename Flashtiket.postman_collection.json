@@ -1,0 +1,703 @@
+{
+	"info": {
+		"_postman_id": "274c315e-0d76-4dd7-bb0f-1511933346aa",
+		"name": "Flashtiket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "reservas",
+			"item": [
+				{
+					"name": "crear reserva",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDJkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFm5pY3JpdXRtYW4yMEBnbWFpbC5jb21kABJlbmNyeXB0ZWRfcGFzc3dvcmRtAAAAPCQyYiQxMiREM0ZGQTh1QjY5ZXNEUEdaVlA3V2x1T2FOeDhIQ01qVHpOeTdKWFgwcXVlUXhFLy5lRlZsaWQAAmlkYRFkAAtpbnNlcnRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGbm9tYnJlbQAAABRicmFuZG9uIGNhc3RybyBwb2xlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAbw-KF20B.L-64v7bbtvd1qq7PKdohZ-SUnmwtRr5DTDxlkrcJKxE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reserva\": {\n      \"cc\": \"1069748842\",\n      \"id_planilla\": \"1\",\n      \"puesto\": \"3\",\n      \"descripcion\": \".\",\n      \"estado\": \".\"\n    }\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/crear_reserva",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"crear_reserva"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener reserva id planilla",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDJkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFm5pY3JpdXRtYW4yMEBnbWFpbC5jb21kABJlbmNyeXB0ZWRfcGFzc3dvcmRtAAAAPCQyYiQxMiREM0ZGQTh1QjY5ZXNEUEdaVlA3V2x1T2FOeDhIQ01qVHpOeTdKWFgwcXVlUXhFLy5lRlZsaWQAAmlkYRFkAAtpbnNlcnRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGbm9tYnJlbQAAABRicmFuZG9uIGNhc3RybyBwb2xlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAbw-KF20B.L-64v7bbtvd1qq7PKdohZ-SUnmwtRr5DTDxlkrcJKxE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/obtener_reserva_id_planilla/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"obtener_reserva_id_planilla",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/api/actualizar_reserva",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDJkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFm5pY3JpdXRtYW4yMEBnbWFpbC5jb21kABJlbmNyeXB0ZWRfcGFzc3dvcmRtAAAAPCQyYiQxMiREM0ZGQTh1QjY5ZXNEUEdaVlA3V2x1T2FOeDhIQ01qVHpOeTdKWFgwcXVlUXhFLy5lRlZsaWQAAmlkYRFkAAtpbnNlcnRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGbm9tYnJlbQAAABRicmFuZG9uIGNhc3RybyBwb2xlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAbw-KF20B.L-64v7bbtvd1qq7PKdohZ-SUnmwtRr5DTDxlkrcJKxE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reserva\": {\n    \t\"cc\": \"1069748842\",\n        \"id_planilla\": \"1\",\n        \"puesto\": \"3\",\n        \"id\": 6,\n        \"descripcion\": \"debe 500\",\n        \"estado\": \"confirmado\"\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/actualizar_reserva",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"actualizar_reserva"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener reserva cc",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDJkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFm5pY3JpdXRtYW4yMEBnbWFpbC5jb21kABJlbmNyeXB0ZWRfcGFzc3dvcmRtAAAAPCQyYiQxMiREM0ZGQTh1QjY5ZXNEUEdaVlA3V2x1T2FOeDhIQ01qVHpOeTdKWFgwcXVlUXhFLy5lRlZsaWQAAmlkYRFkAAtpbnNlcnRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGbm9tYnJlbQAAABRicmFuZG9uIGNhc3RybyBwb2xlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAbw-KF20B.L-64v7bbtvd1qq7PKdohZ-SUnmwtRr5DTDxlkrcJKxE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/obtener_reserva_cc/1069748842",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"obtener_reserva_cc",
+								"1069748842"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar reserva id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDJkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFm5pY3JpdXRtYW4yMEBnbWFpbC5jb21kABJlbmNyeXB0ZWRfcGFzc3dvcmRtAAAAPCQyYiQxMiREM0ZGQTh1QjY5ZXNEUEdaVlA3V2x1T2FOeDhIQ01qVHpOeTdKWFgwcXVlUXhFLy5lRlZsaWQAAmlkYRFkAAtpbnNlcnRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGbm9tYnJlbQAAABRicmFuZG9uIGNhc3RybyBwb2xlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAbw-KF20B.L-64v7bbtvd1qq7PKdohZ-SUnmwtRr5DTDxlkrcJKxE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/borrar_reserva/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"borrar_reserva",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "planillas",
+			"item": [
+				{
+					"name": "crear planilla",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAf_ydFm0B.ZxHzqTiGWlv5IreJWF8NfnpgHmqrb9uElcIlu1XUJb4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"planilla\": {\n      \"fecha\": \"28-08-2019\",\n      \"hora\": \"3:00pm\",\n      \"codigo\": \"4\",\n      \"conductor\": \"alvaro\",\n      \"vehiculo\": \"1547\",\n      \"estado\": \"activo\"\n    }\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/crear_planilla",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"crear_planilla"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener planilla id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAqNGTCG0B.Yd6JJ1tuiG5D1eVYb710QDPLaWQM_tOpa0InGNkzWGc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/obtener_planilla_id/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"obtener_planilla_id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener planilla fecha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAf_ydFm0B.ZxHzqTiGWlv5IreJWF8NfnpgHmqrb9uElcIlu1XUJb4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/obtener_planilla_fecha/28-08-2019",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"obtener_planilla_fecha",
+								"28-08-2019"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar planilla id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYADNPzFm0B.YQoPdESl-eISU5aV56zmKAt9Vj0daYS67rotjS9caaU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/borrar_planilla/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"borrar_planilla",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener planilla id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAf_ydFm0B.ZxHzqTiGWlv5IreJWF8NfnpgHmqrb9uElcIlu1XUJb4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/obtener_planilla_id/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"obtener_planilla_id",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener planillas activas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYADNPzFm0B.YQoPdESl-eISU5aV56zmKAt9Vj0daYS67rotjS9caaU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/obtener_planilla_activa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"obtener_planilla_activa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar planilla",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYADNPzFm0B.YQoPdESl-eISU5aV56zmKAt9Vj0daYS67rotjS9caaU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"planilla\": {\n      \"id\": 22,\n      \"fecha\": \"28-08-2019\",\n      \"hora\": \"3:00pm\",\n      \"codigo\": \"4\",\n      \"conductor\": \"alvaro\",\n      \"vehiculo\": \"1547\",\n      \"estado\": \"activo\"\n    }\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/actualizar_planilla",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"actualizar_planilla"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAE76EF20B.5GyGnFZl_4uyxVGUz_PBgPK2SmLloyYHrSQ2Oud11ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usuario\": {\n      \"nombre\": \"brandon castro\",\n      \"cc\": \"1069748842\",\n      \"celular\": \"3153356923\",\n      \"email\": \"nicriutman21@gmail.com\",\n      \"password\": \"315\"\n    }\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/crear_usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"crear_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener usuario cc",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAE76EF20B.5GyGnFZl_4uyxVGUz_PBgPK2SmLloyYHrSQ2Oud11ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/obtener_usuarios_cc/1069748842",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"obtener_usuarios_cc",
+								"1069748842"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener todos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAE76EF20B.5GyGnFZl_4uyxVGUz_PBgPK2SmLloyYHrSQ2Oud11ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/obtener_usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"obtener_usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDNkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFW5pY3JpdXRtYW4yQGdtYWlsLmNvbWQAEmVuY3J5cHRlZF9wYXNzd29yZG0AAAA8JDJiJDEyJHd0a3hOandsVFRyVzlQbThSWS9DYS42dEZ0elF2U1IuUC9yLzNMbXFLRDRJbFFIS3ZYVzBPZAACaWRhA2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhBWQABGhvdXJhDWQAC21pY3Jvc2Vjb25kaAJhAGEAZAAGbWludXRlYRZkAAVtb250aGEJZAAGc2Vjb25kYTVkAAR5ZWFyYgAAB-NkAAZub21icmVtAAAAG2JyYW5kb24gc3RldmFuIGNhc3RybyBsb3BlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYQ1kAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEWZAAFbW9udGhhCWQABnNlY29uZGE1ZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAE76EF20B.5GyGnFZl_4uyxVGUz_PBgPK2SmLloyYHrSQ2Oud11ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usuario\": {\n      \"nombre\": \"carlos stevan castro lopez\",\n      \"id\": 3,\n      \"cc\": \"106978843\",\n      \"celular\": \"3195244467\",\n      \"email\": \"nicriutman2@gmail.com\",\n      \"password\": \"315\"\n    }\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/actualizar_usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"actualizar_usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "SFMyNTY.g3QAAAACZAAEZGF0YXQAAAANZAAIX19tZXRhX190AAAABmQACl9fc3RydWN0X19kABtFbGl4aXIuRWN0by5TY2hlbWEuTWV0YWRhdGFkAAdjb250ZXh0ZAADbmlsZAAGcHJlZml4ZAADbmlsZAAGc2NoZW1hZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAZzb3VyY2VtAAAACHVzdWFyaW9zZAAFc3RhdGVkAAZsb2FkZWRkAApfX3N0cnVjdF9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAAthdXRoX3Rva2Vuc3QAAAAEZAAPX19jYXJkaW5hbGl0eV9fZAAEbWFueWQACV9fZmllbGRfX2QAC2F1dGhfdG9rZW5zZAAJX19vd25lcl9fZAAaRWxpeGlyLkZsYXNodGlrZXQuVXN1YXJpb3NkAApfX3N0cnVjdF9fZAAhRWxpeGlyLkVjdG8uQXNzb2NpYXRpb24uTm90TG9hZGVkZAACY2NtAAAACjEwNjk3NDg4NDJkAAdjZWx1bGFybQAAAAozMTUzMzU2OTIzZAAFZW1haWxtAAAAFm5pY3JpdXRtYW4yMEBnbWFpbC5jb21kABJlbmNyeXB0ZWRfcGFzc3dvcmRtAAAAPCQyYiQxMiREM0ZGQTh1QjY5ZXNEUEdaVlA3V2x1T2FOeDhIQ01qVHpOeTdKWFgwcXVlUXhFLy5lRlZsaWQAAmlkYRFkAAtpbnNlcnRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGbm9tYnJlbQAAABRicmFuZG9uIGNhc3RybyBwb2xlemQACHBhc3N3b3JkZAADbmlsZAADcm9sbQAAAAdjbGllbnRlZAAKdXBkYXRlZF9hdHQAAAAJZAAKX19zdHJ1Y3RfX2QAFEVsaXhpci5OYWl2ZURhdGVUaW1lZAAIY2FsZW5kYXJkABNFbGl4aXIuQ2FsZW5kYXIuSVNPZAADZGF5YQVkAARob3VyYRFkAAttaWNyb3NlY29uZGgCYQBhAGQABm1pbnV0ZWEAZAAFbW9udGhhCWQABnNlY29uZGEzZAAEeWVhcmIAAAfjZAAGc2lnbmVkbgYAbw-KF20B.L-64v7bbtvd1qq7PKdohZ-SUnmwtRr5DTDxlkrcJKxE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/borrar_usuario/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"borrar_usuario",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "session",
+			"item": [
+				{
+					"name": "http://localhost:4000/sessions/sign_in",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"nicriutman2@gmail.com\",\n\t\"password\": \"315\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/sessions/sign_in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"sessions",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
