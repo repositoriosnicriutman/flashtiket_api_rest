@@ -15,7 +15,7 @@ defmodule FlashtiketWeb.FallbackControler do
     |> render(ChangesetView, "error.json", changeset: changeset)
   end
 
-  def call(conn, {:error, "404.json"}) do
+  def call(conn, nil) do
     conn
     |> put_status(404)
     |> render(ErrorView, "404.json")

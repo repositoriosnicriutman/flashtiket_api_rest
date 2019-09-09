@@ -7,61 +7,32 @@ defmodule FlashtiketWeb.UsuarioController do
   action_fallback(FlashtiketWeb.FallbackControler)
 
   def crear(_conn, %{"usuario" => datos_usuario}) do
-    changeset = Flashtiket.UsuariosConsulta.changeset(%Usuarios{},datos_usuario)
-    case changeset.valid? do
-      true ->
-        case UsuariosConsulta.crear_usuario(changeset) do
-          {:ok, usuario} ->
+    with {:ok, usuario} <- UsuariosConsulta.crear_usuario(datos_usuario) do
             {:success, UsuarioView, "show.json", usuario: usuario}
-          {:error, changeset} ->
-            {:error, changeset}
-        end
-      false ->
-        {:error, changeset}
     end
   end
 
   def obtener(_conn, %{"cc" => cc_usuario}) do
-    case UsuariosConsulta.consultar_cc(cc_usuario) do
-      nil ->
-          {:error, "404.json"}
-      usuario ->
-          {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
+    with usuario <- UsuariosConsulta.consultar_cc(cc_usuario) do
+      {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
     end
   end
 
   def obtener_todos(_conn, _params) do
-    case UsuariosConsulta.consultar_todos() do
-      nil ->
-          {:error, "404.json"}
-      usuario ->
-          {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
+    with usuario <- UsuariosConsulta.consultar_todos() do
+      {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
     end
   end
 
   def actualizar(_conn, %{"usuario" => datos_usuario}) do
-    changeset = Flashtiket.UsuariosConsulta.changeset(%Usuarios{id: datos_usuario["id"]},datos_usuario)
-    case changeset.valid? do
-      true ->
-        case UsuariosConsulta.actualizar_usuario(changeset) do
-          {:ok, usuario} ->
+    with {:ok, usuario} <- UsuariosConsulta.actualizar_usuario(datos_usuario) do
             {:success, UsuarioView, "show.json", usuario: usuario}
-          {:error, changeset} ->
-            {:error, changeset}
-        end
-      false ->
-        {:error, changeset}
     end
   end
 
   def borrar(_conn, %{"id" => id_usuario}) do
-    case UsuariosConsulta.borrar_usuario(%Usuarios{id: String.to_integer id_usuario}) do
-      {:ok, usuario} ->
-        {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
-      {:error, changeset} ->
-        {:error, changeset}
-      false ->
-        {:error, "404.json"}
+    with  {:ok, usuario} <- UsuariosConsulta.borrar_usuario(%Usuarios{id: String.to_integer id_usuario}) do
+            {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
     end
   end
 

@@ -53,8 +53,10 @@ defmodule Flashtiket.UsuariosConsulta do
     end
   end
 
-  def crear_usuario(changeset) do
-    Repo.insert(changeset)
+  def crear_usuario(parametros) do
+    %Usuarios{}
+    |> changeset(parametros)
+    |> Repo.insert()
   end
 
   def consultar_cc(cc) do
@@ -78,17 +80,14 @@ defmodule Flashtiket.UsuariosConsulta do
     Repo.all(query)
   end
 
-  def actualizar_usuario(changeset) do
-    Repo.update(changeset)
+  def actualizar_usuario(parametros) do
+    %Usuarios{id: parametros["id"]}
+    |> changeset(parametros)
+    |> Repo.update()
   end
 
   def borrar_usuario(id) do
-    case Repo.exists?(Flashtiket.Usuarios, id: id) do
-      true ->
-        Repo.delete(id)
-      false ->
-        false
-    end
+    Repo.delete(id)
   end
 
 end

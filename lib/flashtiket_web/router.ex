@@ -38,7 +38,7 @@ defmodule FlashtiketWeb.Router do
 
     post "/crear_reserva", ReservaController, :crear
     get "/obtener_reserva_cc/:cc", ReservaController, :obtener_cc
-    get "/obtener_reserva_id/:id_planilla", ReservaController, :obtener_id
+    get "/obtener_reserva_id_planilla/:id_planilla", ReservaController, :obtener_id
     put "/actualizar_reserva", ReservaController, :actualizar
     delete "/borrar_reserva/:id", ReservaController, :borrar
   end

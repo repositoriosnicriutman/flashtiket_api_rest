@@ -19,34 +19,34 @@ defmodule Flashtiket.ReservasConsulta do
       |> unique_constraint(:puesto, name: :reservas_id_planilla_puesto_index)
   end
 
-  def crear_reserva(changeset) do
-    Repo.insert(changeset)
+  def crear_reserva(parametros) do
+    %Reservas{}
+    |>changeset(parametros)
+    |>Repo.insert()
   end
 
   def consultar_cc(cc) do
-    query = from u in Flashtiket.Reservas,
+    query = from u in Reservas,
             where: u.cc == ^cc,
             select: u
     Repo.all(query)
   end
 
   def consultar_id(id) do
-    query = from u in Flashtiket.Reservas,
+    query = from u in Reservas,
             where: u.id_planilla == ^id,
             select: u
     Repo.all(query)
   end
 
-  def actualizar_reserva(changeset) do
-    Repo.update(changeset)
+  def actualizar_reserva(parametros) do
+    %Reservas{id: parametros["id"]}
+    |>changeset(parametros)
+    |>Repo.update()
   end
 
   def borrar_reserva(id) do
-    case Repo.exists?(Flashtiket.Reservas, id: id) do
-      true ->
-        Repo.delete(id)
-      false ->
-        false
-    end
+    Repo.delete(id)
   end
+
 end
