@@ -1,6 +1,5 @@
 defmodule FlashtiketWeb.ReservaController do
   use FlashtiketWeb, :controller
-  alias Flashtiket.Reservas
   alias Flashtiket.ReservasConsulta
   alias FlashtiketWeb.ReservaView
 
@@ -38,7 +37,7 @@ defmodule FlashtiketWeb.ReservaController do
   end
 
   def borrar(_conn, %{"id" => id_reserva}) do
-    with {:ok, reserva} <- ReservasConsulta.borrar_reserva(%Reservas{id: String.to_integer id_reserva}) do
+    with {:ok, reserva} <- ReservasConsulta.borrar_reserva(String.to_integer id_reserva) do
          {:success, ReservaView, "show.json", reserva: reserva}
     end
   end

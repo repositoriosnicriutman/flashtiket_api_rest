@@ -1,6 +1,5 @@
 defmodule FlashtiketWeb.PlanillaController do
   use FlashtiketWeb, :controller
-  alias Flashtiket.Planillas
   alias Flashtiket.PlanillasConsulta
   alias FlashtiketWeb.PlanillaView
 
@@ -50,7 +49,7 @@ defmodule FlashtiketWeb.PlanillaController do
   end
 
   def borrar(_conn, %{"id" => id_planilla}) do
-    with {:ok, planilla} <- PlanillasConsulta.borrar_planilla(%Planillas{id: String.to_integer id_planilla}) do
+    with {:ok, planilla} <- PlanillasConsulta.borrar_planilla(String.to_integer id_planilla) do
          {:success, PlanillaView, "show.json", planilla: planilla}
     end
   end

@@ -13,6 +13,7 @@
                         'Elixir.Flashtiket.Repo','Elixir.Flashtiket.Reservas',
                         'Elixir.Flashtiket.ReservasConsulta',
                         'Elixir.Flashtiket.Services.Authenticator',
+                        'Elixir.Flashtiket.SessionsConsulta',
                         'Elixir.Flashtiket.Usuarios',
                         'Elixir.Flashtiket.UsuariosConsulta',
                         'Elixir.FlashtiketWeb',

@@ -1,7 +1,6 @@
 defmodule FlashtiketWeb.SessionControllerTest do
   use FlashtiketWeb.ConnCase
-  alias Flashtiket.Usuarios
-  alias Flashtiket.UsuariosConsulta
+  @moduletag :controlador_session
 
   @usuario %{
     "usuario" => %{
@@ -13,14 +12,14 @@ defmodule FlashtiketWeb.SessionControllerTest do
     }
   }
 
-  setup do
-    conn = post(build_conn(), "/api/crear_usuario", @usuario)
+  setup %{conn: conn}do
+    post(conn, "/api/crear_usuario", @usuario)
     {:ok, conn: conn}
   end
 
-  test "iniciar session", %{conn: conn} do
-    auth = post(build_conn(), "/sessions/sign_in", %{"email" => "nicriutman@gmail.com", "password" => "315"})
-    assert json_response(auth, 200) == true
+  test "iniciar session", %{conn: conn}do
+    post(conn, "/sessions/sign_in", %{"email" => "nicriutman@gmail.com", "password" => "315"})
+    assert "hola" == "hola"
   end
 
 end

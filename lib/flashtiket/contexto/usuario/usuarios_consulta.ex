@@ -1,6 +1,5 @@
 defmodule Flashtiket.UsuariosConsulta do
   alias Flashtiket.Usuarios
-  alias Flashtiket.Services.Authenticator
   alias Flashtiket.Repo
   import Ecto.Changeset
   import Ecto.Query
@@ -28,28 +27,6 @@ defmodule Flashtiket.UsuariosConsulta do
           put_change(changeset, :encrypted_password, Comeonin.Bcrypt.hashpwsalt(password))
       _ ->
           changeset
-    end
-  end
-
-  def sign_in(email, password) do
-    case Comeonin.Bcrypt.check_pass(consultar_email(email), password) do
-      {:ok, user} ->
-        token = Authenticator.generate_token(user)
-        Repo.insert(Ecto.build_assoc(user, :auth_tokens, %{token: token}))
-        err -> err
-    end
-  end
-
-
-
-  def sign_out(conn) do
-    case Authenticator.get_auth_token(conn) do
-      {:ok, token} ->
-        case Repo.get_by(AuthToken, %{token: token}) do
-          nil -> {:error, :not_found}
-          auth_token -> Repo.delete(auth_token)
-        end
-      error -> error
     end
   end
 

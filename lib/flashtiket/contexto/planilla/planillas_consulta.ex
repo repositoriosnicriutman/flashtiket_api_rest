@@ -4,10 +4,14 @@ defmodule Flashtiket.PlanillasConsulta do
   import Ecto.Changeset
   import Ecto.Query
 
+
   @datos [
     :fecha,
     :hora,
-    :codigo,
+    :codigo
+  ]
+
+  @actualizar_datos [
     :conductor,
     :vehiculo,
     :estado
@@ -18,6 +22,12 @@ defmodule Flashtiket.PlanillasConsulta do
       |> cast(params, @datos)
       |> validate_required(@datos)
       |> unique_constraint(:fecha, name: :planillas_fecha_hora_codigo_index)
+  end
+
+  def actualizar_changeset(%Planillas{} = planilla, params \\ %{}) do
+    planilla
+      |> cast(params, @actualizar_datos)
+      |> validate_required(@actualizar_datos)
   end
 
   def crear_planilla(parametros) do
@@ -66,12 +76,13 @@ defmodule Flashtiket.PlanillasConsulta do
 
   def actualizar_planilla(parametros) do
     %Planillas{id: parametros["id"]}
-    |> changeset(parametros)
+    |> actualizar_changeset(parametros)
     |> Repo.update()
   end
 
   def borrar_planilla(id) do
-    Repo.delete(id)
+    %Planillas{id: id}
+    |>Repo.delete()
   end
 
 end

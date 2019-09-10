@@ -7,7 +7,10 @@ defmodule Flashtiket.ReservasConsulta do
   @datos [
     :cc,
     :id_planilla,
-    :puesto,
+    :puesto
+  ]
+
+  @actualizar_datos [
     :descripcion,
     :estado
   ]
@@ -17,6 +20,12 @@ defmodule Flashtiket.ReservasConsulta do
       |> cast(params, @datos)
       |> validate_required(@datos)
       |> unique_constraint(:puesto, name: :reservas_id_planilla_puesto_index)
+  end
+
+  def actualizar_changeset(%Reservas{} = reserva, params \\ %{}) do
+    reserva
+      |> cast(params, @actualizar_datos)
+      |> validate_required(@actualizar_datos)
   end
 
   def crear_reserva(parametros) do
@@ -49,12 +58,13 @@ defmodule Flashtiket.ReservasConsulta do
 
   def actualizar_reserva(parametros) do
     %Reservas{id: parametros["id"]}
-    |>changeset(parametros)
+    |>actualizar_changeset(parametros)
     |>Repo.update()
   end
 
   def borrar_reserva(id) do
-    Repo.delete(id)
+    %Reservas{id: id}
+    |>Repo.delete()
   end
 
 end

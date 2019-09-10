@@ -1,6 +1,5 @@
 defmodule FlashtiketWeb.UsuarioController do
   use FlashtiketWeb, :controller
-  alias Flashtiket.Usuarios
   alias Flashtiket.UsuariosConsulta
   alias FlashtiketWeb.UsuarioView
 
@@ -37,7 +36,7 @@ defmodule FlashtiketWeb.UsuarioController do
   end
 
   def borrar(_conn, %{"id" => id_usuario}) do
-    with  {:ok, usuario} <- UsuariosConsulta.borrar_usuario(%Usuarios{id: String.to_integer id_usuario}) do
+    with  {:ok, usuario} <- UsuariosConsulta.borrar_usuario(String.to_integer id_usuario) do
             {:success, UsuarioView, "show_coleccion.json", usuario: usuario}
     end
   end
