@@ -8,9 +8,8 @@ defmodule Flashtiket.UsuariosConsultaTest do
     "nombre" => "brandon castro",
     "cc" => "1069748842",
     "celular" => "3153356923",
-    "email" => "nicriutman@gmail.com",
-    "password" => "315",
-    "rol" => "admin"
+    "email" => "admin@gmail.com",
+    "password" => "315"
   }
 
   setup do
@@ -48,9 +47,8 @@ defmodule Flashtiket.UsuariosConsultaTest do
       %{"nombre" => "brandon castro",
         "cc" => "1069748842",
         "celular" => "3153356923",
-        "email" => "nicriutman@gmail.com",
+        "email" => "admin@gmail.com",
         "password" => "315335",
-        "rol" => "admin",
         "id" => usuario.id})
   end
 

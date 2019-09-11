@@ -8,7 +8,6 @@ defmodule Flashtiket.Repo.Migrations.CrearUsuario do
       add :celular, :string
       add :email, :string
       add :encrypted_password, :string
-      add :rol, :string, default: "cliente"
       timestamps()
     end
     create unique_index(:usuarios, [:email])

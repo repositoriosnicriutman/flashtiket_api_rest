@@ -21,9 +21,8 @@ defmodule FlashtiketWeb.ConnCase do
       "nombre" => "brandon castro",
       "cc" => "1069748842",
       "celular" => "3153356923",
-      "email" => "nicriutman@gmail.com",
-      "password" => "315",
-      "rol" => "admin"
+      "email" => "admin@gmail.com",
+      "password" => "315"
     }
 
 
@@ -46,7 +45,7 @@ defmodule FlashtiketWeb.ConnCase do
     end
 
     {:ok, usuario} = UsuariosConsulta.crear_usuario(@usuario)
-    {:ok, autorizacion} = SessionsConsulta.sign_in("nicriutman@gmail.com", "315")
+    {:ok, autorizacion} = SessionsConsulta.sign_in("admin@gmail.com", "315")
     conn =
           Phoenix.ConnTest.build_conn()
           |> Plug.Conn.put_req_header("accept", "application/json")

@@ -3,7 +3,7 @@ defmodule FlashtiketWeb.SessionControllerTest do
   @moduletag :controlador_session
 
   test "iniciar session", %{conn: conn}do
-    session = post(conn, "/sessions/sign_in", %{"email" => "nicriutman@gmail.com", "password" => "315"})
+    session = post(conn, "/sessions/sign_in", %{"email" => "admin@gmail.com", "password" => "315"})
     assert session.status == 200
   end
 

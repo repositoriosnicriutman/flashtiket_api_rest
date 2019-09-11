@@ -8,7 +8,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
       "nombre" => "brandon",
       "cc" => "1069748842",
       "celular" => "3153356923",
-      "email" => "nicriutman@gmail.com"
+      "email" => "admin@gmail.com"
     }
   }
 
@@ -28,7 +28,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
   end
 
   test "obtener usuario email", %{conn: conn}do
-    conn = get(conn, "/api/obtener_usuarios_email/nicriutman@gmail.com")
+    conn = get(conn, "/api/obtener_usuarios_email/admin@gmail.com")
     assert json_response(conn, 200)["status"] == "success"
   end
 
@@ -45,9 +45,8 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
         "nombre" => "stevan",
         "cc" => "1069748842",
         "celular" => "3153356923",
-        "email" => "nicriutman@gmail.com",
-        "password" => "315",
-        "rol" => "admin"
+        "email" => "admin@gmail.com",
+        "password" => "315"
       }
     })
     assert json_response(conn, 200)["status"] == "success"

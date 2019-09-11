@@ -9,7 +9,6 @@ defmodule Flashtiket.Usuarios do
     field :email, :string
     field :encrypted_password, :string
     field :password, :string,  virtual: true
-    field :rol, :string
     timestamps()
   end
 end
