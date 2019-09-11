@@ -35,15 +35,15 @@ defmodule Flashtiket.ReservasConsultaTest do
   end
 
   test "consultar cc", %{reservas: reservas} do
-    assert reservas = ReservasConsulta.consultar_cc(reservas.cc)
+    assert [schema] = ReservasConsulta.consultar_cc(reservas.cc)
   end
 
   test "consultar id", %{reservas: reservas} do
-    assert reservas = ReservasConsulta.consultar_id(reservas.id_planilla)
+    assert [schema] = ReservasConsulta.consultar_id(reservas.id_planilla)
   end
 
   test "consultar id y puesto", %{reservas: reservas} do
-    assert reservas = ReservasConsulta.consultar_id_y_puesto(reservas.id_planilla, reservas.puesto)
+    assert %{id: id} = ReservasConsulta.consultar_id_y_puesto(reservas.id_planilla, reservas.puesto)
   end
 
   test "actualizar_reserva", %{reservas: reservas} do

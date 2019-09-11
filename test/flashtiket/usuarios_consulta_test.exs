@@ -2,7 +2,6 @@ defmodule Flashtiket.UsuariosConsultaTest do
   use Flashtiket.DataCase
   alias Flashtiket.UsuariosConsulta
   alias Flashtiket.Usuarios
-
   @moduletag :modulo_usuario
 
   @dato %{
@@ -14,7 +13,7 @@ defmodule Flashtiket.UsuariosConsultaTest do
   }
 
   setup do
-    {:ok, usuario} = UsuariosConsulta.crear_usuario(@dato)
+    usuario = UsuariosConsulta.crear_usuario(@dato)
     {:ok, usuario: usuario}
   end
 
@@ -24,27 +23,27 @@ defmodule Flashtiket.UsuariosConsultaTest do
   end
 
   test "crear_usuario", %{usuario: usuario} do
-    assert usuario.cc == "1069748842"
+    assert {:ok, usuario} = usuario
   end
 
-  test "consultar por id", %{usuario: usuario} do
-    assert usuario = UsuariosConsulta.consultar_id(usuario.id)
+  test "consultar por id", %{usuario: {:ok, usuario}} do
+    assert %{id: id} = UsuariosConsulta.consultar_id(usuario.id)
   end
 
-  test "consultar por email", %{usuario: usuario} do
-    assert usuario = UsuariosConsulta.consultar_email(usuario.email)
+  test "consultar por email", %{usuario: {:ok, usuario}} do
+    assert %{id: id} = UsuariosConsulta.consultar_email(usuario.email)
   end
 
-  test "consultar por cc", %{usuario: usuario} do
-    assert usuario = UsuariosConsulta.consultar_cc(usuario.cc)
+  test "consultar por cc", %{usuario: {:ok, usuario}} do
+    assert [schema] = UsuariosConsulta.consultar_cc(usuario.cc)
   end
 
   test "consultar todos" do
-    assert usuario = UsuariosConsulta.consultar_todos()
+    assert [schema] = UsuariosConsulta.consultar_todos()
   end
 
-  test "actualizar_usuario", %{usuario: usuario} do
-    assert {:ok, struct} = UsuariosConsulta.actualizar_usuario(
+  test "actualizar_usuario", %{usuario: {:ok, usuario}} do
+    assert {:ok, usuario} = UsuariosConsulta.actualizar_usuario(
       %{"nombre" => "brandon castro",
         "cc" => "1069748842",
         "celular" => "3153356923",
@@ -53,8 +52,8 @@ defmodule Flashtiket.UsuariosConsultaTest do
         "id" => usuario.id})
   end
 
-  test "borrar usuario", %{usuario: usuario} do
-    assert {:ok, struct} = UsuariosConsulta.borrar_usuario(%Usuarios{id: usuario.id})
+  test "borrar usuario", %{usuario: {:ok, usuario}} do
+    assert {:ok, struct} = UsuariosConsulta.borrar_usuario(usuario.id)
   end
 
 end

@@ -21,23 +21,7 @@ defmodule FlashtiketWeb.PlanillaControllerTest do
     }
   }
 
-  @usuario %{
-    "usuario" => %{
-      "nombre" => "brandon castro",
-      "cc" => "1069748842",
-      "celular" => "3153356923",
-      "email" => "nicriutman@gmail.com",
-      "password" => "315"
-    }
-  }
-
   setup %{conn: conn} do
-    post(conn, "/api/crear_usuario", @usuario)
-    {:ok, autorizacion} = SessionsConsulta.sign_in("nicriutman@gmail.com", "315")
-    conn =
-          Phoenix.ConnTest.build_conn()
-          |> Plug.Conn.put_req_header("accept", "application/json")
-          |> Plug.Conn.put_req_header("authorization", "Bearer #{autorizacion.token}")
     datos = post(conn, "/api/crear_planilla", @planilla)
     {:ok, conn: conn, datos: datos}
   end
@@ -59,20 +43,17 @@ defmodule FlashtiketWeb.PlanillaControllerTest do
   test "obtener planilla fecha", %{conn: conn, datos: datos} do
     conn = get(conn, "/api/obtener_planilla_fecha/#{datos.assigns.planilla.fecha}")
     [respuesta| _lista] = json_response(conn, 200)
-    assert respuesta["status"] == "success"
-  end
+    assert respuesta["status"] == "success"  end
 
   test "obtener planilla fecha y hora", %{conn: conn, datos: datos} do
     conn = get(conn, "/api/obtener_planilla_fecha_y_hora/#{datos.assigns.planilla.fecha}/#{datos.assigns.planilla.hora}")
     [respuesta| _lista] = json_response(conn, 200)
-    assert respuesta["status"] == "success"
-  end
+    assert respuesta["status"] == "success"  end
 
   test "obtener planilla estado", %{conn: conn} do
     conn = get(conn, "/api/obtener_planilla_activa")
     [respuesta| _lista] = json_response(conn, 200)
-    assert respuesta["status"] == "success"
-  end
+    assert respuesta["status"] == "success"  end
 
   test "actualizar", %{conn: conn, datos: datos} do
     conn = put(conn, "/api/actualizar_planilla", %{

@@ -3,16 +3,6 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
   alias Flashtiket.SessionsConsulta
   @moduletag :controlador_usuario
 
-  @usuario %{
-    "usuario" => %{
-      "nombre" => "brandon castro",
-      "cc" => "1069748842",
-      "celular" => "3153356923",
-      "email" => "nicriutman@gmail.com",
-      "password" => "315"
-    }
-  }
-
   @usuario_error %{
     "usuario" => %{
       "nombre" => "brandon",
@@ -22,18 +12,8 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
     }
   }
 
-  setup %{conn: conn} do
-    usuario = post(conn, "/api/crear_usuario", @usuario)
-    {:ok, autorizacion} = SessionsConsulta.sign_in("nicriutman@gmail.com", "315")
-    conn =
-          Phoenix.ConnTest.build_conn()
-          |> Plug.Conn.put_req_header("accept", "application/json")
-          |> Plug.Conn.put_req_header("authorization", "Bearer #{autorizacion.token}")
-    {:ok, conn: conn, usuario: usuario}
-  end
-
   test "crear usuario", %{usuario: usuario} do
-    assert json_response(usuario, 200)["status"] == "success"
+    assert usuario.cc == "1069748842"
   end
 
   test "error crear usuario", %{conn: conn} do
@@ -61,7 +41,7 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
   test "actualizar", %{conn: conn, usuario: usuario} do
     conn = put(conn, "/api/actualizar_usuarios", %{
       "usuario" => %{
-        "id" => usuario.assigns.usuario.id,
+        "id" => usuario.id,
         "nombre" => "stevan",
         "cc" => "1069748842",
         "celular" => "3153356923",
@@ -69,7 +49,6 @@ defmodule FlashtiketWeb.UsuarioControllerTest do
         "password" => "315"
       }
     })
-    IO.inspect conn
     assert json_response(conn, 200)["status"] == "success"
   end
 

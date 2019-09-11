@@ -20,23 +20,7 @@ defmodule FlashtiketWeb.ReservaControllerTest do
     }
   }
 
-  @usuario %{
-    "usuario" => %{
-      "nombre" => "brandon castro",
-      "cc" => "1069748842",
-      "celular" => "3153356923",
-      "email" => "nicriutman@gmail.com",
-      "password" => "315"
-    }
-  }
-
   setup %{conn: conn} do
-    post(conn, "/api/crear_usuario", @usuario)
-    {:ok, autorizacion} = SessionsConsulta.sign_in("nicriutman@gmail.com", "315")
-    conn =
-          Phoenix.ConnTest.build_conn()
-          |> Plug.Conn.put_req_header("accept", "application/json")
-          |> Plug.Conn.put_req_header("authorization", "Bearer #{autorizacion.token}")
     datos = post(conn, "/api/crear_reserva", @reserva)
     {:ok, conn: conn, datos: datos}
   end

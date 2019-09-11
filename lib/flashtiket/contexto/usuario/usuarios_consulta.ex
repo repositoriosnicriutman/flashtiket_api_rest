@@ -64,7 +64,8 @@ defmodule Flashtiket.UsuariosConsulta do
   end
 
   def borrar_usuario(id) do
-    Repo.delete(id)
+    %Usuarios{id: id}
+    |>Repo.delete()
   end
 
 end
