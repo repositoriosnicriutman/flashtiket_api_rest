@@ -27,6 +27,7 @@
                         'Elixir.FlashtiketWeb.Gettext',
                         'Elixir.FlashtiketWeb.PlanillaController',
                         'Elixir.FlashtiketWeb.PlanillaView',
+                        'Elixir.FlashtiketWeb.Plugs.Administrador',
                         'Elixir.FlashtiketWeb.Plugs.Authenticate',
                         'Elixir.FlashtiketWeb.ReservaController',
                         'Elixir.FlashtiketWeb.ReservaView',

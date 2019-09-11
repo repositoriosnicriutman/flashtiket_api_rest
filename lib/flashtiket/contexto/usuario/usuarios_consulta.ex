@@ -9,7 +9,8 @@ defmodule Flashtiket.UsuariosConsulta do
     :cc,
     :celular,
     :email,
-    :password
+    :password,
+    :rol
   ]
 
   def changeset(usuario = %Usuarios{}, parametros \\ %{}) do
