@@ -30,4 +30,4 @@ test
 vaya a la carpeta src y escriba el comando mix test
 
 
-NOTA: la implementacion docker no es mia, pero la api rest si lo es. aun asi e estudie la manera en que funciona, porfavor deja tu comentario. 
+NOTA: la implementacion docker no es mia, pero la api rest si lo es. aun asi e estudiado la manera en que funciona, porfavor deja tu comentario. 
