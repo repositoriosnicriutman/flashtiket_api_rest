@@ -1,93 +1,33 @@
-# Dockerized Elixir/Phoenix Development Environment
+bienvenido a flashtiket
 
-### Introduction
-I have been working on a long-running personal Phoenix project since Phoenix 1.0.2.
-Over the past year and a half or so, Phoenix and Elixir have undergone numerous changes,
-and some of them (okay most of them) broke my application code. Things really went south
-after I found myself working on multiple different projects that were built on different
-Phoenix versions. This reminded me a lot of the early Ruby and Rails days (and fighting
-rbenv and bundle).
+esta es una api rest echa en phoenix en la que puede crear, actualizar, buscar y eliminar usuario, planilla y reservas, para la implementacion de un sitio web que le permita hacer reservaciones de pasajes a los usuarios, las planillas que el administrador crea.
 
-This project was conceived to deal with the issues of running different Elixir and Phoenix
-versions and supporting the development of apps built with different Elixir and Phoenix versions.
+requisitos de ejecucion
 
+-docker
+-postman
 
-### Getting Started
-It's so simple: just clone this repository.
+ejecucion
 
-You can specify a particular Phoenix version by targeting the corresponding release tag of this repository.
+ir a la carpeta raiz, y ejecutar los siguientes comandos
+- ./mix deps.get
+- ./mix ecto.create
+- ./mix ecto.migrate
+- docker-compose up
 
-For instance, for a dockerized development environment for Phoenix 1.4.0 you could run:
-```
-git clone -b 1.4.0 https://github.com/nicbet/docker-phoenix ~/Projects/hello-phoenix
-```
+postman
 
+en la raiz hay un archivo json llamado Flashtiket.postman_collection que son las consultas a la api rest
 
-### New Application from Scratch
-Navigate the to where you cloned this repository, for example:
-```
-cd ~/Projects/hello-phoenix
-```
+uso de la api
 
-Initialize a new phoenix application. The following command will create a new Phoenix application called `hello` under the `src/` directory, which is mounted inside the container under `/app` (the default work dir).
-```
-./mix phx.new . --app hello
-```
-Why does this work? The `docker-compose.yml` file specifies that your local `src/` directory is mapped inside the docker container as `/app`. And `/app` in the container is marked as the working directory for any command that is being executed, such as `mix phoenix.new`.
+- empiece creando un usuario, admin@gmail.com es el que esta definido para tener acceso a todas las consultas
+- inicie session con este correo
+- copie el codigo token y peguelo en la autorizacion bearer token de la consulta que vaya a realizar
 
-**NOTE:** It is important to specify your app name through the `--app <name>` option, as Phoenix will otherwise name your app from the target directory passed in, which in our case is `.`
+test
 
-**NOTE:** It is okay to answer `Y` when phoenix states that the `/app` directory already exists.
-
-**NOTE:** Starting from 1.3.0 the `mix phoenix.new` command has been deprecated. You will have to use the `phx.new` command instead of `phoenix.new` or `mix deps.get` will fail!
-
-### Alternative: Existing Application
-Copy your existing code Phoenix application code to the `src/` directory in the cloned repository.
-
-**NOTE:** the `src/` directory won't exist so you'll have to create it first.
+vaya a la carpeta src y escriba el comando mix test
 
 
-### Database
-
-#### Preparation
-The `docker-compose.yml` file defines a database service container named `db` running a PostgreSQL database that is available to the main application container via the hostname `db`. By default Phoenix assumes that you are running a database locally.
-
-Modify the Ecto configuration `src/config/dev.exs` to point to the DB container:
-```
-# Configure your database
-config :test, Test.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "test_dev",
-  hostname: "db",
-  pool_size: 10
-```
-
-#### Initialize the Database with Ecto
-When you first start out, the `db` container will have no databases. Let's initialize a development DB using Ecto:
-```
-./mix ecto.create
-```
-
-If you copied an existing application, now would be the time to run your database migrations.
-```
-./mix ecto.migrate
-```
-
-
-### Starting the Application
-Starting your application is incredibly easy:
-```
-docker-compose up
-```
-Once up, it will be available under http://localhost:4000
-
-
-## Notes
-
-### Executing custom commands
-To run commands other than `mix` tasks, you can use the `./run` script.
-```
-./run iex -S mix
-```
+NOTA: la implementacion docker no es mia, pero la api rest si lo es. aun asi estudie la manera en que funciona, porfavor deja tu comentario. 
