@@ -1,6 +1,6 @@
 bienvenido a flashtiket
 
-esta es una api rest echa en phoenix en la que puede crear, actualizar, buscar y eliminar usuario, planilla y reservas, para la implementacion de un sitio web que le permita hacer reservaciones de pasajes a los usuarios, las planillas que el administrador crea.
+esta es una api rest echa en phoenix en la que puede crear, actualizar, buscar y eliminar usuario, planilla y reservas, para la implementacion de un sitio web que le permita hacer reservaciones de pasajes a los usuarios de las planillas que el administrador crea.
 
 requisitos de ejecucion
 
