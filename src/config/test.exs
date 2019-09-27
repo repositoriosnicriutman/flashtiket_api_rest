@@ -16,3 +16,6 @@ config :flashtiket, Flashtiket.Repo,
   database: "flashtiket_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :flashtiket, Flashtiket.Mailer,
+  adapter: Bamboo.TestAdapter

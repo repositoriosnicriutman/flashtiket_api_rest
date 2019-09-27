@@ -20,7 +20,7 @@ defmodule Flashtiket.MixProject do
   def application do
     [
       mod: {Flashtiket.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :bamboo, :bamboo_smtp, :runtime_tools]
     ]
   end
 
@@ -43,6 +43,8 @@ defmodule Flashtiket.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.1"},
+      {:bamboo, "~> 1.3"},
+      {:bamboo_smtp, "~> 2.0.0"},
       {:bcrypt_elixir, "~> 1.0"}
     ]
   end

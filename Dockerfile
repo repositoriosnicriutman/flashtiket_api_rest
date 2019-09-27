@@ -17,4 +17,4 @@ WORKDIR $APP_HOME
 
 EXPOSE 4000
 
-CMD ["mix", "phx.server"]
+CMD ["MIX_ENV=prod", "mix", "phx.server"]

@@ -22,6 +22,7 @@ defmodule FlashtiketWeb.Router do
   scope "/api", FlashtiketWeb do
     pipe_through :api
 
+    get "/email", EmailController, :send_welcome_email
     post "/crear_usuario", UsuarioController, :crear
   end
 

@@ -13,6 +13,9 @@ config :flashtiket, FlashtiketWeb.Endpoint,
   check_origin: false,
   watchers: []
 
+
+  config :flashtiket, Flashtiket.Mailer,
+  adapter: Bamboo.LocalAdapter
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
